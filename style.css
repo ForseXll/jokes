@@ -141,3 +141,6 @@ button {
     border-radius: 5px;
     gap: 10px;
 }
+ button[disabled]{
+     background: #EC96DB;
+ }

@@ -7,7 +7,7 @@ const innerModal = document.querySelector('.inner-modal');
 const outerModal = document.querySelector('.outer-modal');
 const jokeHolder = document.querySelector('.inner-modal p')
 const random2 = document.querySelector('.random2');
-let userInput;
+let userInput = '';
 
 //main function to get data
 async function getData(options, number)
@@ -19,7 +19,7 @@ async function getData(options, number)
         }
     });
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
 }
 
@@ -38,6 +38,11 @@ async function getRandom()
 async function doStuff(element, num)
 {
     let result = await getData(element, num);
+    if (result.total_jokes === 0)
+    {
+        noJokes(result);
+        return;
+    }
     if (result.total_pages == 1)
     {
         displayJokes(result.results);
@@ -46,6 +51,14 @@ async function doStuff(element, num)
     else if (result.total_pages > 1)
     {
         displayPage(result);
+        if (result.current_page === result.previous_page)
+        {
+            document.getElementById("prev").disabled = true;
+        }
+        else if (result.current_page === result.next_page)
+        {
+            document.getElementById("next").disabled = true;
+        }
     }
     displayJokes(result.results);
 }
@@ -78,6 +91,12 @@ function modalClose()
     outerModal.classList.remove('open');
 }
 
+function noJokes(options)
+{
+    let html = `<p>Sorry, the joke with the word "${options.search_term}" doesn't exist. Try again!!</p>`;
+    displayHTML.innerHTML = html;
+}
+
 //creating buttons when more than one page of jokes
 function displayPage(options)
 {
@@ -92,12 +111,10 @@ function removeButtons()
 {
     if (document.getElementById("prev") == null)
     {
-        console.log('entered first');
         return;
     }
     else
     {
-        console.log('entered here');
         document.getElementById("prev").remove();
         document.getElementById("next").remove();
         headerHTML.removeEventListener('click', handleClick);
@@ -129,3 +146,8 @@ outerModal.addEventListener('click', function clicking(event)
         modalClose();
     }
 });
+
+window.onload = function ()
+{
+    doStuff(userInput, 1);
+};

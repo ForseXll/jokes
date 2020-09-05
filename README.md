@@ -1,1 +1,1 @@
-Just putting together a simple website for practice of vanilla Javascript. 
+Put together a simple joke website to practice API with vanilla Javascript. 
