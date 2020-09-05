@@ -1,0 +1,143 @@
+:root {
+    --pink: #DC6DBC;
+    --blue: #133ADC;
+    --teal: #13DCD9;
+    --yellow: #DCDC13;
+}
+
+html {
+    height: 100%;
+    font-size: 1rem;
+    font-family: Comic Sans MS;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 150px auto 70px;
+    margin: 0;
+}
+
+.header {
+    height: 130px;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    background: beige;
+}
+
+h1 {
+    transform: skew(-7deg);
+    font-weight: 600;
+    align-self: center;
+    text-align: center;
+}
+
+.header h4 {
+    grid-column: 2/3;
+    align-self: center;
+}
+
+.random {
+    grid-column: 4/5;
+    align-self: center;
+}
+
+.header p {
+    align-self: center;
+    margin: 0px 20%;
+    grid-column: 1/4;
+    grid-row: 2/3;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    padding: 10px;
+}
+
+.pages {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    padding: 0px 10px 0px;
+}
+
+.display {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, repeat(100px, 1fr));
+    grid-gap: 15px;
+    padding: 8px;
+}
+
+.items {
+    color: black;
+    background: rgb(5, 184, 184);
+    border: 2px solid;
+    border-color: grey;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px grey;
+}
+
+.footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin: 0;
+    background: whitesmoke;
+}
+
+.footer p {
+    text-align: center;
+    font-size: large;
+}
+
+.me {
+    text-align: end;
+}
+
+.outer-modal img {
+    width: 100%;
+    height: 100%;
+}
+
+.outer-modal::-webkit-scrollbar {
+    width: 0;
+}
+
+.outer-modal {
+    display: grid;
+    background: hsla(120, 35%, 40%, 0.3);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    overflow: auto;
+}
+
+.outer-modal.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.inner-modal {
+    max-width: 500px;
+    min-width: 400px;
+    padding: 2rem;
+    background: whitesmoke;
+    border-radius: 5px;
+}
+button {
+    color: black;
+    background: var(--pink);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+}

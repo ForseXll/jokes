@@ -1,0 +1,1 @@
+Just putting together a simple website for practice of vanilla Javascript. 
